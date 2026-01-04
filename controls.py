@@ -3,15 +3,19 @@ from bullet import Bullet
 from ino import Ino
 import time
 
-def events(screen, gun, bullets):
-    """обработка нажатий клавиш"""
+def events(screen, gun, bullets): #Обротка нажатий на клавиши
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_d:
                 gun.mright = True
+            elif event.key == pygame.K_RIGHT:
+                gun.mright = True
             elif event.key == pygame.K_a:
+                gun.mleft = True
+            elif event.key == pygame.K_LEFT:
                 gun.mleft = True
             elif event.key == pygame.K_SPACE:
                 new_bullet = Bullet(screen, gun)
@@ -21,6 +25,11 @@ def events(screen, gun, bullets):
                 gun.mright = False
             elif event.key == pygame.K_a:
                 gun.mleft = False
+            elif event.key == pygame.K_RIGHT:
+                gun.mright = False
+            elif event.key == pygame.K_LEFT:
+                gun.mleft = False
+            
 
 def update(bg_color, screen, stats, sc, gun, inos, bullets):
     """обновление экрана"""
