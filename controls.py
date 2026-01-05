@@ -2,13 +2,19 @@ import pygame, sys
 from bullet import Bullet
 from ino import Ino
 import time
+from main_meny import Menu 
+from stats import Stats
+from main_meny import Menu
+from Button_class import ImageButton
 
+stats = Stats()
+menu = Menu()
 def events(screen, gun, bullets): #Обротка нажатий на клавиши
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-        elif event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_d:
                 gun.mright = True
             elif event.key == pygame.K_RIGHT:
@@ -28,7 +34,8 @@ def events(screen, gun, bullets): #Обротка нажатий на клави
             elif event.key == pygame.K_RIGHT:
                 gun.mright = False
             elif event.key == pygame.K_LEFT:
-                gun.mleft = False
+                gun.mleft = False        
+                        
             
 
 def update(bg_color, screen, stats, sc, gun, inos, bullets):
@@ -70,8 +77,8 @@ def gun_kill(stats, screen, sc, gun, inos, bullets):
         time.sleep(1)
     else:
         stats.run_game = False
-        sys.exit()
-
+        screen.fill((0, 0, 0))
+        
 def update_inos(stats, screen, sc, gun, inos, bullets):
     """обновляет позицию пришельцев"""
     inos.update()

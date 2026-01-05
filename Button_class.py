@@ -33,7 +33,7 @@ class ImageButton:
     
     def chech_hover(self, mouse_pos):
         """Проверка наведения мишы на кнопку"""
-        self.is_hovered = self.rect.collidedict(mouse_pos)
+        self.is_hovered = self.rect.collidepoint(mouse_pos)
 
     def handle_event(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1 and self.is_hovered:

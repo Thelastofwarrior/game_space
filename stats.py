@@ -4,7 +4,8 @@ class Stats():
     def __init__(self):
         """инициализирует статистику"""
         self.reset_stats()
-        self.run_game = True
+        self.run_game = False
+        self.menu_run = True
         with open('highscore.txt', 'r') as f:
             self.high_score = int(f.readline())
 
